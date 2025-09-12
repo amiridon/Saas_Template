@@ -1,0 +1,29 @@
+{
+  "env": {
+    "es2022": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "script"
+  },
+  "extends": ["eslint:recommended", "plugin:import/recommended", "prettier"],
+  "plugins": ["import"],
+  "ignorePatterns": ["dist", "node_modules"],
+  "globals": {
+    "describe": "readonly",
+    "it": "readonly",
+    "expect": "readonly",
+    "test": "readonly"
+  },
+  "rules": {
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "import/order": [
+      "warn",
+      {
+        "newlines-between": "always",
+        "alphabetize": { "order": "asc", "caseInsensitive": true }
+      }
+    ]
+  }
+}

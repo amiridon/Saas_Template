@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "App Config",
+    "type": "object",
+    "properties": {
+        "APP_ENV": {
+            "type": "string",
+            "enum": [
+                "development",
+                "test",
+                "staging",
+                "production"
+            ],
+            "default": "development"
+        },
+        "APP_URL": {
+            "type": "string",
+            "minLength": 1
+        },
+        "API_PORT": {
+            "type": "string",
+            "pattern": "^\\d+$",
+            "default": "4000"
+        },
+        "WEB_PORT": {
+            "type": "string",
+            "pattern": "^\\d+$",
+            "default": "3000"
+        },
+        "WORKER_PORT": {
+            "type": "string",
+            "pattern": "^\\d+$",
+            "default": "5000"
+        },
+        "SESSION_SECRET": {
+            "type": "string",
+            "minLength": 8
+        }
+    },
+    "required": [
+        "APP_ENV",
+        "APP_URL",
+        "SESSION_SECRET"
+    ],
+    "additionalProperties": true
+}

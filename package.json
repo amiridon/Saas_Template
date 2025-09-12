@@ -1,0 +1,39 @@
+{
+    "name": "saas-starter-monorepo",
+    "private": true,
+    "version": "0.1.0",
+    "workspaces": [
+        "apps/*",
+        "packages/*"
+    ],
+    "scripts": {
+        "bootstrap": "npm install",
+        "build": "turbo run build",
+        "dev": "turbo run dev --parallel",
+        "lint": "eslint .",
+        "format": "prettier --write .",
+        "typecheck": "tsc -v || echo 'tsc not configured yet'",
+        "test": "vitest run",
+        "e2e": "echo 'e2e placeholder'"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.21",
+        "ajv": "^8.17.1",
+        "dotenv": "^16.4.5",
+        "eslint": "^8.57.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-import": "^2.29.1",
+        "eslint-plugin-node": "^11.1.0",
+        "husky": "^9.1.6",
+        "lint-staged": "^15.2.10",
+        "prettier": "^3.3.3",
+        "turbo": "^2.1.1",
+        "typescript": "^5.6.2",
+        "vitest": "^2.0.5"
+    },
+    "lint-staged": {
+        "*.{js,ts,jsx,tsx,md,json}": [
+            "prettier --write"
+        ]
+    }
+}

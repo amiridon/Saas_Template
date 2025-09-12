@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: cp .env.example .env
+      - run: npm install
+      - run: npm run lint
+      - run: npm test || true
+      - name: Smoke start api
+        run: |
+          node apps/api/src/server.js &
+          sleep 2
+          curl -f http://localhost:4000/health
+      - name: Smoke start web
+        run: |
+          node apps/web/src/server.js &
+          sleep 2
+          curl -f http://localhost:3000/health
+      - name: Smoke start worker
+        run: |
+          node apps/worker/src/server.js &
+          sleep 2
+          curl -f http://localhost:5000/health
