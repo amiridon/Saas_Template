@@ -1,13 +1,14 @@
 const express = require('express');
 const { getConfig } = require('../../../packages/core/config');
 
-const app = express();
+function createApp() {
+  const app = express();
 
-app.get('/health', (_req, res) => {
+  app.get('/health', (_req, res) => {
     res.status(200).json({ ok: true, service: 'web' });
-});
+  });
 
-app.get('/', (_req, res) => {
+  app.get('/', (_req, res) => {
     res.type('html').send(`
   <html>
     <head>
@@ -22,9 +23,16 @@ app.get('/', (_req, res) => {
     </body>
   </html>
   `);
-});
+  });
+  return app;
+}
 
-const config = getConfig();
-app.listen(config.WEB_PORT, () => {
+if (require.main === module) {
+  const config = getConfig();
+  const app = createApp();
+  app.listen(config.WEB_PORT, () => {
     console.log(`[web] listening on :${config.WEB_PORT} (${config.APP_ENV})`);
-});
+  });
+}
+
+module.exports = { createApp };

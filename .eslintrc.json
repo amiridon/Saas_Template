@@ -14,7 +14,8 @@
     "describe": "readonly",
     "it": "readonly",
     "expect": "readonly",
-    "test": "readonly"
+  "test": "readonly",
+  "beforeEach": "readonly"
   },
   "rules": {
     "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],

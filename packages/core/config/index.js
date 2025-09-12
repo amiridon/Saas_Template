@@ -10,13 +10,13 @@ let cachedConfig = null;
 
 function findEnvUpwards(startDir) {
     let dir = startDir;
-    while (true) {
+    do {
         const candidate = path.join(dir, '.env');
         if (fs.existsSync(candidate)) return candidate;
         const parent = path.dirname(dir);
         if (parent === dir) break;
         dir = parent;
-    }
+    } while (dir);
     return null;
 }
 

@@ -12,6 +12,9 @@ bootstrap:
 dev:
 	@npm run dev
 
+compose:
+	@docker compose -f infra/docker/docker-compose.dev.yml up --build
+
 lint:
 	@npm run lint
 
