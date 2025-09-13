@@ -1,0 +1,16 @@
+{
+  "name": "db",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "migrate": "node -e \"(async()=>{const db=require('./src');await db.migrateLatest();console.log('migrated');process.exit(0)})().catch(e=>{console.error(e);process.exit(1)})\"",
+    "seed": "node -e \"(async()=>{const db=require('./src');await db.seedRun();console.log('seeded');process.exit(0)})().catch(e=>{console.error(e);process.exit(1)})\"",
+    "reset": "node -e \"(async()=>{const db=require('./src');await db.rollbackAll();console.log('rolled back');process.exit(0)})().catch(e=>{console.error(e);process.exit(1)})\""
+  },
+  "dependencies": {
+    "better-sqlite3": "^9.6.0",
+    "knex": "^3.1.0"
+  }
+}

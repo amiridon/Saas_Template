@@ -21,6 +21,8 @@ function findEnvUpwards(startDir) {
 }
 
 function loadEnv() {
+    // In test mode, don't auto-load .env so tests can precisely control process.env
+    if (process.env.NODE_ENV === 'test') return;
     const envPath = findEnvUpwards(process.cwd()) || findEnvUpwards(__dirname);
     if (envPath) dotenv.config({ path: envPath });
     else dotenv.config();
@@ -48,7 +50,9 @@ function getConfig() {
         API_PORT: Number(env.API_PORT || 4000),
         WEB_PORT: Number(env.WEB_PORT || 3000),
         WORKER_PORT: Number(env.WORKER_PORT || 5000),
-        SESSION_SECRET: env.SESSION_SECRET
+        SESSION_SECRET: env.SESSION_SECRET,
+        DB_PROVIDER: env.DB_PROVIDER || 'sqlite',
+        DB_URL: env.DB_URL || 'data/dev.sqlite'
     };
     return cachedConfig;
 }

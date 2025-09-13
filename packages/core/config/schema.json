@@ -32,10 +32,20 @@
             "pattern": "^\\d+$",
             "default": "5000"
         },
-        "SESSION_SECRET": {
-            "type": "string",
-            "minLength": 8
-        }
+            "SESSION_SECRET": {
+                "type": "string",
+                "minLength": 8
+            },
+            "DB_PROVIDER": {
+                "type": "string",
+                "enum": ["sqlite", "postgres", "mysql", "sqlserver"],
+                "default": "sqlite"
+            },
+            "DB_URL": {
+                "type": "string",
+                "minLength": 1,
+                "default": "data/dev.sqlite"
+            }
     },
     "required": [
         "APP_ENV",
