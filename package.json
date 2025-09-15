@@ -13,11 +13,11 @@
         "lint": "eslint .",
         "format": "prettier --write .",
         "typecheck": "tsc -v || echo 'tsc not configured yet'",
-    "test": "vitest run",
-    "e2e": "echo 'e2e placeholder'",
-    "db:migrate": "npm --workspace db run migrate",
-    "db:seed": "npm --workspace db run seed",
-    "db:reset": "npm --workspace db run reset"
+        "test": "vitest run",
+        "e2e": "echo 'e2e placeholder'",
+        "db:migrate": "npm --workspace db run migrate",
+        "db:seed": "npm --workspace db run seed",
+        "db:reset": "npm --workspace db run reset"
     },
     "devDependencies": {
         "@types/express": "^4.17.21",
